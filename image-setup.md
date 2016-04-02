@@ -67,6 +67,14 @@
 
 1. Reboot
 
+## Optional: Big Red Button
+
+1. `$ sudo apt-get install -y ruby-dev libusb-1.0-0-dev && sudo gem install dream_cheeky`
+1. Get default scripts with `$ wget "https://github.com/futurice/chilipie-kiosk/archive/master.zip" && unzip master.zip && cp -v $(find chilipie-kiosk-master/big-red-button/ -type f) . && rm -rf chilipie-kiosk-master/ master.zip`
+1. In `/etc/udev/rules.d/99-dream_cheeky.rules`:
+
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="1d34", ATTRS{idProduct}=="000d", MODE="0666", GROUP="plugdev", RUN+="/home/pi/.big-red-button.sh"
+
 ## Preparing the image
 
 1. Disable SSH access (because the default credentials aren't very secure): `$ sudo systemctl disable ssh.service`
